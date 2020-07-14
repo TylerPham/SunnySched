@@ -1,7 +1,7 @@
 # SunnySched
 A neat little script to input google calendar events automatically
 
-#Requirements
+## Requirements
 - Python 2.6 or greater
 - Google account with access to calendar
 - pip package manager

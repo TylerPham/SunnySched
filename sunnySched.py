@@ -25,9 +25,6 @@ def generateEventName(userObject):
     return event_name
 
 def main():
-    """Shows basic usage of the Google Calendar API.
-    Prints the start and name of the next 10 events on the user's calendar.
-    """
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -47,7 +44,6 @@ def main():
             pickle.dump(creds, token)
 
     service = build('calendar', 'v3', credentials=creds)
-    # BOILER PLATE END
 
     for user in config.USER_LIST:
         scheduleEntry = getTodaysScheduleEntry(user["schedule"])
@@ -67,7 +63,6 @@ def main():
                 }
             }
 
-            # service.events().insert(calendarId=config.TEST_CALENDAR_ID, body=event_payload).execute()
             service.events().insert(calendarId=config.GROUP_CALENDAR_ID, body=event_payload).execute()
             service.events().insert(calendarId=config.SUNNYSIDE_CALENDAR_ID, body=event_payload).execute()
             print('Event created: \n{} \ntoday @ {}'.format(event_payload, datetime.now().strftime("%Y-%m-%dT%H:%M:%S")))
